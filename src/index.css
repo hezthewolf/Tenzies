@@ -14,6 +14,7 @@ code {
 
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
 main {
     height: 100%;
     padding: 20px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -42,6 +44,7 @@ main {
     font-weight: 400;
     margin-top: 0;
     text-align: center;
+    padding: 20px;
 }
 
 .dice-container {
@@ -84,4 +87,52 @@ main {
 
 .roll-dice:active {
     box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.game-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
+}
+
+.games-won{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 80px;
+    background-color: #59E391;
+    border-radius: 25px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.games-won p:nth-child(2) {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    color: #3d0042;
+}
+
+.roll-count{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 80px;
+    background-color: #f37e4f;
+    border-radius: 25px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.roll-count p:nth-child(2) {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    color: #00012e;
 }
