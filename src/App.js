@@ -7,8 +7,15 @@ export default function App() {
 
     const [dice, setDice] = useState(allNewDice())
     const [tenzies, setTenzies] = useState(false)
-    const [tenziesValue, setTenziesValue] = useState(0)
+    const [tenziesValue, setTenziesValue] = useState(() => {
+        const myTenzies = JSON.parse(localStorage.getItem("tenziesValue"))
+        const myTenziesValue = (typeof myTenzies.number !== 'undefined') ? myTenzies.number : 0
+        console.log(myTenziesValue)
+        return myTenziesValue || 0
+    })
     const [rollCount, setRollCount] = useState(0)
+    console.log(tenziesValue)
+
 
     useEffect(() => {
         const allHeld = dice.every(die => die.isHeld)
@@ -17,8 +24,14 @@ export default function App() {
         if (allHeld && allSameValue) {
             setTenzies(true)
             setTenziesValue(tenziesValue + 1)
+            localStorage.setItem('tenziesValue', JSON.stringify({
+                number: tenziesValue
+            }))
         }
+
+        
     }, [dice])
+
 
     function generateNewDie() {
         return {
@@ -28,18 +41,6 @@ export default function App() {
         }
     }
 
-    //localStorage to store the state of the game
-    // function storeValues() {
-    //     localStorage.setItem('dice', JSON.stringify(dice))
-    // }
-
-    // //retrieve the state of the game from localStorage
-    // function retrieveValues() {
-    //     const storedDice = JSON.parse(localStorage.getItem('dice'))
-    //     if (storedDice) {
-    //         setDice(storedDice)
-    //     }
-    // }
 
     function allNewDice() {
         const newDice = []
@@ -48,6 +49,7 @@ export default function App() {
         }
         return newDice
     }
+    
 
     function rollDice() {
         if (!tenzies) {
