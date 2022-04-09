@@ -24,9 +24,6 @@ export default function App() {
         if (allHeld && allSameValue) {
             setTenzies(true)
             setTenziesValue(tenziesValue + 1)
-            localStorage.setItem('tenziesValue', JSON.stringify({
-                number: tenziesValue
-            }))
         }
 
         
@@ -64,6 +61,9 @@ export default function App() {
             setTenzies(false)
             setDice(allNewDice())
             setRollCount(0)
+            localStorage.setItem('tenziesValue', JSON.stringify({
+                number: tenziesValue
+            }))
         }
     }
 
