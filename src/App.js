@@ -10,11 +10,15 @@ export default function App() {
     const [tenziesValue, setTenziesValue] = useState(() => {
         const myTenzies = JSON.parse(localStorage.getItem("tenziesValue"))
         const myTenziesValue = (typeof myTenzies.number !== 'undefined') ? myTenzies.number : 0
-        console.log(myTenziesValue)
-        return myTenziesValue || 0
+        if(myTenzies){
+            return myTenziesValue
+        }else{
+            localStorage.setItem('tenziesValue', JSON.stringify({
+                number: 0
+            }))
+        }
     })
     const [rollCount, setRollCount] = useState(0)
-    console.log(tenziesValue)
 
 
     useEffect(() => {
@@ -25,7 +29,6 @@ export default function App() {
             setTenzies(true)
             setTenziesValue(tenziesValue + 1)
         }
-
         
     }, [dice])
 
