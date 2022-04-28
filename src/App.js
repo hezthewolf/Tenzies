@@ -16,6 +16,7 @@ export default function App() {
             localStorage.setItem('tenziesValue', JSON.stringify({
                 number: 0
             }))
+            return myTenziesValue
         }
     })
     const [rollCount, setRollCount] = useState(0)
